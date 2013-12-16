@@ -1,0 +1,14 @@
+{
+
+    "name": "pandoc-project",
+    "version": "0.0.1",
+    "author": "Nicolas De Jaeghere",
+    "description": "Pandoc Project",
+    "private": true,
+
+    "devDependencies": {
+
+        "grunt": "~0.4",
+        "grunt-contrib-watch": "~0.5"
+    }
+}
