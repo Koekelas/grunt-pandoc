@@ -1,9 +1,10 @@
 {
 
-    "name": "pandoc-project",
+    "name": "grunt-pandoc",
     "version": "0.0.1",
     "author": "Nicolas De Jaeghere",
-    "description": "Pandoc Project",
+    "description": "Grunt plugin which automates building documents with Pandoc",
+    "license": "MIT License",
     "private": true,
 
     "devDependencies": {
