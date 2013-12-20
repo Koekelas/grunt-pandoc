@@ -2,8 +2,10 @@
 
 "use strict";
 
+//example configuration, customise this
 var configuration = {
 
+    //use these to structure your project
     SOURCE_DIR: "source",
     RESOURCES_DIR: "<%=SOURCE_DIR%>/resources",
     PANDOC_DIR: "<%=RESOURCES_DIR%>/pandoc",
@@ -17,96 +19,130 @@ var configuration = {
 
     pandoc: {
 
-        /*
-        options: {
-
-            //General
-            //from: "markdown",
-            //to: "html",
-            //dataDir: "<%=PANDOC_DIR%>",
-
-            //Reader
-            //parseRaw: true,
-            //smart: true,
-            //oldDashes: true,
-            //baseHeaderLevel: 1,
-            //indentedCodeClasses: "javascript,numberLines",
-            //defaultImageExtension: "png",
-            //filter: "./<%=FILTERS_DIR%>/filter",
-            //metadata: ["key1", "key2:value"],
-            //normalize: true,
-            //preserveTabs: true,
-            //tabStop: 4,
-
-            //General writer
-            //standalone: true,
-            //template: "<%=TEMPLATES_DIR%>/template",
-            //variable: ["key1", "key2:value"],
-            //noWrap: true,
-            //columns: 120,
-            //toc: true,
-            //tocDepth: 3,
-            //noHighlight: true,
-            //highlightStyle: "pygments",
-            //includeInHeader: ["<%=FRAGMENTS_DIR%>/endHeader1", "<%=FRAGMENTS_DIR%>/endHeader2"],
-            //includeBeforeBody: ["<%=FRAGMENTS_DIR%>/beginningBody1", "<%=FRAGMENTS_DIR%>/beginningBody2"],
-            //includeAfterBody: ["<%=FRAGMENTS_DIR%>/endBody1", "<%=FRAGMENTS_DIR%>/endBody2"],
-
-            //Specific writers
-            //selfContained: true,
-            //htmlQTags: true,
-            //ascii: true,
-            //referenceLinks: true,
-            //atxHeaders: true,
-            //chapters: true,
-            //numberSections: true,
-            //numberOffset: "0,0",
-            //noTexLigatures: true,
-            //listings: true,
-            //incremental: true,
-            //slideLevel: 1,
-            //sectionDivs: true,
-            //emailObfuscation: "none",
-            //idPrefix: "prefix",
-            //titlePrefix: "prefix",
-            //css: ["<%=STYLES_DIR%>/style1.css", "<%=STYLES_DIR%>/style2.css"],
-            //referenceOdt: "<%=PANDOC_DIR%>/reference.odt",
-            //referenceDocx: "<%=PANDOC_DIR%>/reference.docx",
-            //epubStylesheet: "<%=PANDOC_DIR%>/epub.css",
-            //epubCoverImages: "<%=IMAGES_DIR%>/cover.png",
-            //epubMetadata: "<%=RESOURCES_DIR%>/metadata.xml",
-            //epubEmbedFont: ["<%=FONTS_DIR%>/font1", "<%=FONTS_DIR%>/font2"],
-            //epubChapterLevel: 1,
-            //latexEngine: "pdflatex",
-
-            //Citation rendering
-            //bibliography: "<%=RESOURCES_DIR%>/bibliography",
-            //csl: "<%=PANDOC_DIR%>/default.csl",
-            //citationAbbreviations: "<%=PANDOC_DIR%>/citationAbbreviations",
-            //natbib: true,
-            //biblatex: true,
-
-            //Math rendering
-            //latexmathml: "latexMathML.js", //url to local copy
-            //latexmathml: true, //embed
-            //mathml: "mathML.js", //url to local copy
-            //mathml: true //embed
-            //jsmath: "jsMath/easy/load.js", //url to local copy
-            //jsmath: true, //use jsMath but no embedding or linking
-            //mathjax: "mathJax.js", //url to local copy
-            //mathjax: true, //link
-            //gladtex: true,
-            //mimetex: "mimetex.cgi", //url to local copy
-            //mimetex: true, //url defaults to /cgi-bin/mimetex.cgi
-            //webtex: "script" //url to local copy or service
-            //webtex: true //url defaults to the Google Chart API
-        },
-        */
-
         build: {
 
-            src: ["<%=SOURCE_DIR%>/00 Title.md", "<%=SOURCE_DIR%>/10 Chapter 01.md"],
-            dest: "<%=BUILD_DIR%>/<%=pkg.name%>.pdf"
+            src: ["<%=SOURCE_DIR%>/00 Title.md", "<%=SOURCE_DIR%>/10 Chapter 01.md"], //your input file(s)
+            dest: "<%=BUILD_DIR%>/<%=pkg.name%>.html", //Your output file. Note that your package.json is available under the name pkg.
+
+            /*
+            Use this to set the options you would normally set on the command line. You should set the output file using
+            the dest key value pair above. Note that not all of Pandoc's options make sense to be used in this context.
+
+            To set an option, define a key value pair where the key is the name of the option you want to set and the
+            value is the value you want to set it to.
+
+            # Keys
+
+            Both short and long options are supported. To find the name of a short option, take the short option and
+            drop the hyphen (-). For example:
+
+            -f becomes f
+
+            To find the name of a long option, take the long option and capitalise the first letter of each word except
+            for the first word and drop all hyphens (-). For example:
+
+            --from becomes from and --data-dir becomes dataDir
+
+            # Values
+
+            A value can be a/an:
+
+            *   boolean (to set an option that doesn't have a value, set it's value to true to set it);
+            *   number;
+            *   string;
+            *   array of the above (to set an option multiple times).
+
+            # Tips
+
+            *   Setting an option's value to false unsets the option.
+            *   When setting an option which can be set multiple times to a single value, the value doesn't need to be
+                wrapped in an array.
+            */
+            options: {
+
+                //all sensible options (Pandoc 1.12.2.1)
+
+                //general
+                //from: "markdown",
+                //to: "html",
+                //dataDir: "<%=PANDOC_DIR%>",
+
+                //reader
+                //parseRaw: true,
+                //smart: true,
+                //oldDashes: true,
+                //baseHeaderLevel: 1,
+                //indentedCodeClasses: "javascript,numberLines",
+                //defaultImageExtension: "png",
+                //filter: "./<%=FILTERS_DIR%>/filter",
+                //metadata: ["key1", "key2:value"],
+                //normalize: true,
+                //preserveTabs: true,
+                //tabStop: 4,
+
+                //general writer
+                //standalone: true,
+                //template: "<%=TEMPLATES_DIR%>/template",
+                //variable: ["key1", "key2:value"],
+                //noWrap: true,
+                //columns: 120,
+                //toc: true,
+                //tocDepth: 3,
+                //noHighlight: true,
+                //highlightStyle: "pygments",
+                //includeInHeader: ["<%=FRAGMENTS_DIR%>/endHeader1", "<%=FRAGMENTS_DIR%>/endHeader2"],
+                //includeBeforeBody: ["<%=FRAGMENTS_DIR%>/beginningBody1", "<%=FRAGMENTS_DIR%>/beginningBody2"],
+                //includeAfterBody: ["<%=FRAGMENTS_DIR%>/endBody1", "<%=FRAGMENTS_DIR%>/endBody2"],
+
+                //specific writers
+                //selfContained: true,
+                //htmlQTags: true,
+                //ascii: true,
+                //referenceLinks: true,
+                //atxHeaders: true,
+                //chapters: true,
+                //numberSections: true,
+                //numberOffset: "0,0",
+                //noTexLigatures: true,
+                //listings: true,
+                //incremental: true,
+                //slideLevel: 1,
+                //sectionDivs: true,
+                //emailObfuscation: "none",
+                //idPrefix: "prefix",
+                //titlePrefix: "prefix",
+                //css: ["<%=STYLES_DIR%>/style1.css", "<%=STYLES_DIR%>/style2.css"],
+                //referenceOdt: "<%=PANDOC_DIR%>/reference.odt",
+                //referenceDocx: "<%=PANDOC_DIR%>/reference.docx",
+                //epubStylesheet: "<%=PANDOC_DIR%>/epub.css",
+                //epubCoverImages: "<%=IMAGES_DIR%>/cover.png",
+                //epubMetadata: "<%=RESOURCES_DIR%>/metadata.xml",
+                //epubEmbedFont: ["<%=FONTS_DIR%>/font1", "<%=FONTS_DIR%>/font2"],
+                //epubChapterLevel: 1,
+                //latexEngine: "pdflatex",
+
+                //citation rendering
+                //bibliography: "<%=RESOURCES_DIR%>/bibliography",
+                //csl: "<%=PANDOC_DIR%>/default.csl",
+                //citationAbbreviations: "<%=PANDOC_DIR%>/citationAbbreviations",
+                //natbib: true,
+                //biblatex: true,
+
+                //math rendering
+                //latexmathml: "latexMathML.js", //url to local copy
+                //latexmathml: true, //embed
+                //mathml: "mathML.js", //url to local copy
+                //mathml: true //embed
+                //jsmath: "jsMath/easy/load.js", //url to local copy
+                //jsmath: true, //use jsMath but no embedding or linking
+                //mathjax: "mathJax.js", //url to local copy
+                //mathjax: true, //link
+                //gladtex: true,
+                //mimetex: "mimetex.cgi", //url to local copy
+                //mimetex: true, //url defaults to /cgi-bin/mimetex.cgi
+                //webtex: "script" //url to local copy or service
+                //webtex: true //url defaults to the Google Chart API
+            }
         }
     },
 
@@ -266,5 +302,5 @@ module.exports = function configure(grunt) {
     grunt.loadNpmTasks("grunt-contrib-watch");
     configuration.pkg = grunt.file.readJSON("package.json");
     grunt.initConfig(configuration);
-    grunt.registerTask("default", ["pandoc:build", "watch:source"]);
+    grunt.registerTask("default", ["pandoc:build", "watch:source"]); //example default task, customise this
 };
