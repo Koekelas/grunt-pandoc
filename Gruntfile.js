@@ -5,7 +5,7 @@
 //example configuration, customise this
 var configuration = {
 
-    //use these to structure your project
+    //use these variables to structure your project
     SOURCE_DIR: "source",
     RESOURCES_DIR: "<%=SOURCE_DIR%>/resources",
     PANDOC_DIR: "<%=RESOURCES_DIR%>/pandoc",
@@ -21,11 +21,11 @@ var configuration = {
 
         build: {
 
-            src: ["<%=SOURCE_DIR%>/00 Title.md", "<%=SOURCE_DIR%>/10 Chapter 01.md"], //your input file(s)
+            src: ["<%=SOURCE_DIR%>/01 Chapter 01.md", "<%=SOURCE_DIR%>/02 Chapter 02.md"], //your input file(s)
             dest: "<%=BUILD_DIR%>/<%=pkg.name%>.html", //Your output file. Note that your package.json is available under the name pkg.
 
             /*
-            Use this to set the options you would normally set on the command line. You should set the output file using
+            Use this object to set the options you would normally set on the command line. You should set the output file using
             the dest key value pair above. Note that not all of Pandoc's options make sense to be used in this context.
 
             To set an option, define a key value pair where the key is the name of the option you want to set and the
@@ -152,12 +152,7 @@ var configuration = {
 
             files: "<%=SOURCE_DIR%>/**/*", //Watch all files so we also rebuild when, for example, we add an image. grunt-contrib-watch doesn't support the standard way of defining files.
             tasks: ["pandoc:build"],
-
-            options: {
-
-                event: ["added", "changed"], //why didn't they name this events?
-                spawn: false
-            }
+            options: {spawn: false}
         }
     }
 };
