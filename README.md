@@ -104,7 +104,7 @@ var configuration = {
                 "<%=SOURCE_DIR%>/03 Software.md",
                 "<%=SOURCE_DIR%>/04 Configuring.md"
             ],
-            dest: "<%=BUILD_DIR%>/<%=pkg.name%>.pdf", //keep this document open in Evince or Sumatra PDF (probably other PDF viewers too) and they will reload the it when it changes
+            dest: "<%=BUILD_DIR%>/<%=pkg.name%>.pdf", //keep this document open in Evince or Sumatra PDF (probably other PDF viewers too) and they will reload the document when it changes
 
             options: {
 
