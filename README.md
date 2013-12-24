@@ -238,6 +238,58 @@ The HTML fragment liveReload.html looks like this:
 
 The HTTP server and script are part of the grunt-contrib-watch task. You'll also want to change the default task to `["pandoc:liveReload", "watch:source"]`.
 
+## GitHub readme previewer
+
+```js
+var configuration = {
+
+    SOURCE_DIR: "source",
+    RESOURCES_DIR: "<%=SOURCE_DIR%>/resources",
+    FRAGMENTS_DIR: "<%=RESOURCES_DIR%>/fragments",
+    BUILD_DIR: "build",
+
+    pandoc: {
+
+        build: {
+
+            src: ["<%=SOURCE_DIR%>/README.md"],
+            dest: "<%=BUILD_DIR%>/<%=pkg.name%>.html",
+
+            options: {
+
+                from: "markdown_github",
+                to: "html5",
+                normalize: true,
+                standalone: true,
+                includeAfterBody: "<%=FRAGMENTS_DIR%>/liveReload.html"
+            }
+        }
+    },
+
+    watch: {
+
+        readme: {
+
+            files: "<%=SOURCE_DIR%>/README.md",
+            tasks: ["pandoc:build"],
+            options: {
+
+                spawn: false,
+                livereload: true
+            }
+        }
+    }
+};
+```
+
+The HTML fragment liveReload.html looks like this:
+
+```html
+<script src="http://localhost:35729/livereload.js"></script>
+```
+
+The HTTP server and script are part of the grunt-contrib-watch task. You'll also want to change the default task to `["pandoc:build", "watch:readme"]`.
+
 # To-do
 
 *   Turn this into a real Grunt plugin. At the moment, this is more a project template.
