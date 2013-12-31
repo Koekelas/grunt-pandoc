@@ -25,8 +25,9 @@ var configuration = {
             dest: "<%=BUILD_DIR%>/<%=pkg.name%>.html", //Your output file. Note that your package.json is available under the name pkg.
 
             /*
-            Use this object to set the options you would normally set on the command line. You should set the output file using
-            the dest key value pair above. Note that not all of Pandoc's options make sense to be used in this context.
+            Use this object to set the options you'd normally set on the command line. You should set the output file
+            using the dest key value pair above. Note that not all of Pandoc's options make sense to be used in this
+            context.
 
             To set an option, define a key value pair where the key is the name of the option you want to set and the
             value is the value you want to set it to.
